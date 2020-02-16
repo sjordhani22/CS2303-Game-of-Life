@@ -1,0 +1,137 @@
+README.txt 
+
+Homework 2: The Game of Life 
+Author: Stefano Jordhani 
+Created On: February 4, 2019 
+
+Project Background: 
+	
+	The project created is a program demonstrating John Conway's Game of Life. John Conway's 
+Game of Life is a mathematical simulation that is played on a square or rectangular game board 
+and contains different positions that either have a "living" cell there or it is simply an empty space. 
+The Game of Life is played through different generations and there are rules to what the next generation will 
+look like. 
+
+In terms of my program a character, "X", will represent a living cell in that postion, 
+while the character "0" represents an empty position where there is no cell there. 
+
+RULES OF THE GAME: 
+
+	Survival: If a living cell has 2 or 3 neighbors, then that living cell will survive to the next generation 
+	
+	Death: If a living cell has less than 2 or more than 3 neighbors then the living cell will become an unoccupied space
+	 	 in the next generation 
+	 	 
+	Birth: If an unoccupied space has 3 living cell neigbors then a living cell will appear there in the next 
+			generation 
+			
+TERMINATING CONDITIONS: 
+
+	-Pattern repeats from one generation to the next (AA) OR if there is a AB AB pattern  
+	
+	-All cells die which means the board is all unoccupied spaces 
+
+	
+HOW THE PROGRAM FUNCTIONS: 
+	
+	My program functions by taking in user input through a command line. This command line is looking for atleast 4 
+arguments however it can take up to 7 arguments. The command line includes a path to a text file which contains a 
+pattern or "starting gameboard" for the program.Through eclipse, you would be recommended to locate the run 
+configurations and under the "arguments" tab you will be able to enter your arguments.
+
+COMMAND LINE: 
+
+	FILE NAME, NR, NC, GENS, inputfile, [PRINT], [PAUSE] 
+	
+FILE NAME: The name of the file, which in this case would be "./HW2". This is not REQUIRED 
+
+NR: NR stands for the number (int) of rows that the user will want for the gameboard when the program runs 
+
+NC: NC stands for the number (int) of columns that the user will want for the gameboard when the program runs 
+
+GENS: GENS is the number (int) of generations that the user wants the program to run 
+
+inputfile: inputfile is the text file that contains the starting configuration of the "gameboard" that will be 
+			"generation 0" 
+
+[PRINT]: The print argument on the command line is optional, however, if you were to enter an argument, the program
+		will look for either a character "y" or "n". 
+		
+	-Inputting a "y" for the print argument will tell the program that you want to print the gameboard after each 
+	 generation
+	 
+	-Inputting a "n" for the print argument will tell the program that you do not want to print the gameboard 
+	 after each generation 
+	 
+	 
+[PAUSE]: The pause argument is the last argument on the command line and it is also optional just like [PRINT].
+		Also just like [PRINT], [PAUSE] will look for a character "y" or "n". 
+		
+	-Inputting a "y" for the pause argument will tell the program that you want to pause after each 
+	 generation
+	 
+	-Inputting a "n" for the pause argument will tell the program that you do not want to pause after each 
+	 generation 
+
+
+PROBLEMS: 
+
+	-Some problems that I had when writing the program was determining how to initialize the arrays and pointers to the 
+arrays. Along with that, getting the "musical chairs" section of the code where we have to shift the pointers 
+to the arrays to the next generation so it could cycle through the wanted generations, was something I had trouble with.
+ 	
+ 	-I was having trouble deciding what the warnings were that I was getting because they read "variable unused" when I
+ had used them. I eventually learned that the warnings show up because in certain cases the program wouldn't fully 
+ loop through a function which means it may never reach that variable. 
+ 	
+ 	-Learning the difference between the pointers and the arrays, and being able to distinguish their purpose in the 
+program was something I struggled with a little bit. 
+
+
+
+SOURCES: 
+
+Parts of the code (functions) was given to me through the starter code by Professor Therese Smith and 
+Professor Michael Ciraldi. 
+
+The layouts for most of the functions were present in the starter code but the functions were not complete,
+requiring me to add parts to some fucntions. 
+
+The descriptions for these functions are not detailed however if you would like more information check out the comments 
+in the Doxygen html
+
+
+getLetter- The getLetter function looks through the gameboard and returns what character is in the desired position 
+
+howManyNeighbors- This function contains the code that is used to search around a living cell to see if there is any 
+neighboring living cells. This functions checks the 3 x 3 border around the living cell because any cell there 
+would be considered a neighbor of the living cell.  
+
+playOne-This function simply plays through one generation. 
+
+generate- This function loops through and plays the number of generations that is desired. Checks to see if the terminating 
+conditions are present in between generations and keeps a count of the number of generations played. Although you may
+want 10 generations to output, patterns such as block do not play that many generations. 
+
+anyX- This function includes the code that searches through each row and column given through the parameter, and 
+outputs true or false if there is a living cell in the array.
+
+sameContent- This function compares two arrays or "gameboards" and determines if they have the same pattern or not. 
+This functions produces true if they are the same and false otherwise. This helpe is used in generate because it 
+is one of the terminating conditions. 
+
+production- This function makes sure the command line is all set and has the correct number of arguments. It opens 
+the file and reads it to determine how many rows and columns are in the gameboard that the file contains. This functions 
+essentially checks to see if the file and the command line is set to be used for the other functions to work. 
+Production checks to see if the array that will be created from the file has more than 0 rows and columns and will send 
+out errors if anything is wrong with the file.  
+
+fileIntoArray- The function is used to transfer the file from a .txt format into an array 
+that the other functions can use for different purposes. It reads through the file and determines what characters are 
+in each line. 
+
+printThis- This function uses getLetter to determine what goes in each position of the gameboard and will print out the 
+gameboard exactly how it's supposed to look like. With that, this function uses "\n" to create a new line or row in the 
+gameboard. This is what we see in the console when we run the program with a pattern text file. 
+		
+

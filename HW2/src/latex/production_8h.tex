@@ -1,0 +1,292 @@
+\section{production.\+h File Reference}
+\label{production_8h}\index{production.\+h@{production.\+h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \textbf{ production} (int argc, char $\ast$argv[$\,$])
+\item 
+void \textbf{ Play\+One} (unsigned int nr, unsigned int nc, char $\ast$Old, char $\ast$New)
+\item 
+void \textbf{ usage} (void)
+\item 
+char \textbf{ get\+Letter} (int row, int col, int n\+Cols, char $\ast$Old)
+\item 
+int \textbf{ how\+Many\+Neighbors} (int row, int col, int n\+Rows, int n\+Cols, char $\ast$Old)
+\item 
+void \textbf{ file\+Into\+Array} (int n\+Rows, int n\+Cols, int how\+Many\+Lines\+In\+File, int maximum\+Width, char $\ast$ar\+\_\+p, F\+I\+LE $\ast$fp)
+\item 
+int \textbf{ generate} (int gens, int n\+Rows, int n\+Cols, char $\ast$old\+\_\+p, char $\ast$new\+\_\+p, char $\ast$other\+\_\+p, char print, char pause)
+\item 
+bool \textbf{ anyX} (char $\ast$arr, int n\+Rows, int n\+Cols)
+\item 
+bool \textbf{ same\+Content} (char $\ast$one\+\_\+p, char $\ast$another\+\_\+p, int n\+Rows, int n\+Cols)
+\item 
+void \textbf{ print\+This} (int n\+Rows, int n\+Cols, char $\ast$old\+\_\+p)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\label{production_8h_a85f4ceb7eddb00ab9989daf800a74d3f}} 
+\index{production.\+h@{production.\+h}!anyX@{anyX}}
+\index{anyX@{anyX}!production.\+h@{production.\+h}}
+\subsubsection{any\+X()}
+{\footnotesize\ttfamily bool anyX (\begin{DoxyParamCaption}\item[{char $\ast$}]{arr,  }\item[{int}]{n\+Rows,  }\item[{int}]{n\+Cols }\end{DoxyParamCaption})}
+
+anyX Looks through a game board (multi-\/dimensional array) and determines if there is any living cells (\char`\"{}\+X\char`\"{}) 
+\begin{DoxyParams}{Parameters}
+{\em char$\ast$} & arr The pointer to the array that is being searched \\
+\hline
+{\em int} & n\+Rows The number of rows in the array \\
+\hline
+{\em int} & n\+Cols The number of columns in the array \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool returns a boolean, true or false, whether there is a living cell in the array or not 
+\end{DoxyReturn}
+
+
+References get\+Letter().
+
+
+
+Referenced by generate(), test\+Any\+X(), and test\+Any\+X2().
+
+\mbox{\label{production_8h_aee93a0bb5ac22f3bcd89c0e0cbfcad3e}} 
+\index{production.\+h@{production.\+h}!file\+Into\+Array@{file\+Into\+Array}}
+\index{file\+Into\+Array@{file\+Into\+Array}!production.\+h@{production.\+h}}
+\subsubsection{file\+Into\+Array()}
+{\footnotesize\ttfamily void file\+Into\+Array (\begin{DoxyParamCaption}\item[{int}]{n\+Rows,  }\item[{int}]{n\+Cols,  }\item[{int}]{how\+Many\+Lines\+In\+File,  }\item[{int}]{maximum\+Width,  }\item[{char $\ast$}]{ar\+\_\+p,  }\item[{F\+I\+LE $\ast$}]{fp }\end{DoxyParamCaption})}
+
+file\+Into\+Array takes the given pattern file and translates it into a multidimensional array 
+\begin{DoxyParams}{Parameters}
+{\em int} & n\+Rows The number of rows in the array \\
+\hline
+{\em int} & n\+Cols The number of columns in the array \\
+\hline
+{\em int} & how\+Many\+Lines\+In\+File The number of lines that are in the input pattern file \\
+\hline
+{\em int} & maximum\+Width The number of columns in the file \\
+\hline
+{\em char$\ast$} & ar\+\_\+p The pointer to the array that will be created from the file \\
+\hline
+{\em F\+I\+L\+E$\ast$} & fp The pointer to the file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+There is no return because the results are in ar\+\_\+p 
+\end{DoxyReturn}
+
+
+Referenced by production().
+
+\mbox{\label{production_8h_a7986ca2f4339fb9c9d88ac88dff0f34d}} 
+\index{production.\+h@{production.\+h}!generate@{generate}}
+\index{generate@{generate}!production.\+h@{production.\+h}}
+\subsubsection{generate()}
+{\footnotesize\ttfamily int generate (\begin{DoxyParamCaption}\item[{int}]{gens,  }\item[{int}]{n\+Rows,  }\item[{int}]{n\+Cols,  }\item[{char $\ast$}]{next\+Gen\+\_\+p,  }\item[{char $\ast$}]{curr\+\_\+p,  }\item[{char $\ast$}]{before\+Curr\+\_\+p,  }\item[{char}]{print,  }\item[{char}]{pause }\end{DoxyParamCaption})}
+
+generate Plays through the number of generations requested 
+\begin{DoxyParams}{Parameters}
+{\em int} & gens The number of generations that the function should play \\
+\hline
+{\em int} & n\+Rows The number of rows in the array \\
+\hline
+{\em int} & n\+Cols The number of columns in the array \\
+\hline
+{\em char$\ast$} & next\+Gen\+\_\+p The pointer to the array for the next generation created \\
+\hline
+{\em char$\ast$} & curr\+\_\+p The pointer to the array of the current generation we are on \\
+\hline
+{\em char$\ast$} & before\+Curr\+\_\+p The pointer to the array of the previous generation \\
+\hline
+{\em char} & print This is the character that is inputted by the user that decides if the program should print after every generation \\
+\hline
+{\em char} & pause This is the character that decides if the program should pause after every generation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int The number of generations played 
+\end{DoxyReturn}
+
+
+References any\+X(), Play\+One(), print\+This(), and same\+Content().
+
+
+
+Referenced by production().
+
+\mbox{\label{production_8h_adc602acdc7ecd4199ad2b30ac03feb52}} 
+\index{production.\+h@{production.\+h}!get\+Letter@{get\+Letter}}
+\index{get\+Letter@{get\+Letter}!production.\+h@{production.\+h}}
+\subsubsection{get\+Letter()}
+{\footnotesize\ttfamily char get\+Letter (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col,  }\item[{int}]{n\+Cols,  }\item[{char $\ast$}]{Old }\end{DoxyParamCaption})}
+
+get\+Letter Finds whether there is a living (\char`\"{}\+X\char`\"{}) OR dead (\char`\"{}o\char`\"{}) cell in a certain position 
+\begin{DoxyParams}{Parameters}
+{\em int} & row This is the row of the desired position \\
+\hline
+{\em int} & col This is the column of the desired position \\
+\hline
+{\em int} & n\+Cols This is the number of columns in the multi-\/dimensional array \\
+\hline
+{\em char$\ast$} & Pointer to the array that contains the board \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char This function returns the character that is locacted in the desired location 
+\end{DoxyReturn}
+
+
+Referenced by any\+X(), how\+Many\+Neighbors(), Play\+One(), print\+This(), and same\+Content().
+
+\mbox{\label{production_8h_a0dc02bc9235ab46b2da1c02d9ecc952c}} 
+\index{production.\+h@{production.\+h}!how\+Many\+Neighbors@{how\+Many\+Neighbors}}
+\index{how\+Many\+Neighbors@{how\+Many\+Neighbors}!production.\+h@{production.\+h}}
+\subsubsection{how\+Many\+Neighbors()}
+{\footnotesize\ttfamily int how\+Many\+Neighbors (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col,  }\item[{int}]{n\+Rows,  }\item[{int}]{n\+Cols,  }\item[{char $\ast$}]{Old }\end{DoxyParamCaption})}
+
+how\+Many\+Neighbors Checks to see how many living cells are neighboring a desired cell 
+\begin{DoxyParams}{Parameters}
+{\em int} & row The row of the cell we are looking for \\
+\hline
+{\em int} & col The column of the cell we are looking for \\
+\hline
+{\em int} & n\+Rows The number of rows in the array \\
+\hline
+{\em int} & n\+Cols The number of columns in the array \\
+\hline
+{\em char$\ast$} & Pointer to the array that contains the board \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Returns the number of living neighbor cells that a cell has 
+\end{DoxyReturn}
+
+
+References get\+Letter().
+
+
+
+Referenced by Play\+One(), testhow\+Many\+Neighbors(), and testhow\+Many\+Neighbors2().
+
+\mbox{\label{production_8h_af5b14d1dae61b5bee7bc0c3aa0dea79e}} 
+\index{production.\+h@{production.\+h}!Play\+One@{Play\+One}}
+\index{Play\+One@{Play\+One}!production.\+h@{production.\+h}}
+\subsubsection{Play\+One()}
+{\footnotesize\ttfamily void Play\+One (\begin{DoxyParamCaption}\item[{unsigned int}]{nr,  }\item[{unsigned int}]{nc,  }\item[{char $\ast$}]{Old,  }\item[{char $\ast$}]{New }\end{DoxyParamCaption})}
+
+Play\+One carries out one generation 
+\begin{DoxyParams}{Parameters}
+{\em unsigned} & int nr, the number of rows in the petri dish \\
+\hline
+{\em unsigned} & int nc, the number of columns in the petri dish \\
+\hline
+{\em char$\ast$} & Old, the location of the upper left of starting petri dish \\
+\hline
+{\em char$\ast$} & New, the location of the upper left of the ending petri dish \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+There is none, because results are in New array 
+\end{DoxyReturn}
+
+
+References get\+Letter(), and how\+Many\+Neighbors().
+
+
+
+Referenced by generate(), test\+Play\+Block\+One(), test\+Play\+One(), test\+Play\+One\+All\+Die(), and test\+Play\+One\+Blinker().
+
+\mbox{\label{production_8h_ab73ab2c09c3d3d34fa5239433d488ff9}} 
+\index{production.\+h@{production.\+h}!print\+This@{print\+This}}
+\index{print\+This@{print\+This}!production.\+h@{production.\+h}}
+\subsubsection{print\+This()}
+{\footnotesize\ttfamily void print\+This (\begin{DoxyParamCaption}\item[{int}]{n\+Rows,  }\item[{int}]{n\+Cols,  }\item[{char $\ast$}]{next\+Gen\+\_\+p }\end{DoxyParamCaption})}
+
+print\+This Prints out the gameboard with the appropriate living and dead cells in their correct position 
+\begin{DoxyParams}{Parameters}
+{\em int} & n\+Rows The number of rows that will be in the printed array \\
+\hline
+{\em int} & n\+Cols The number of columns that will be in the printer array \\
+\hline
+{\em char$\ast$} & next\+Gen\+\_\+p The pointer to the array of the next generation to be printed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void Returns nothing because the gameboard will be printed in next\+Gen\+\_\+p 
+\end{DoxyReturn}
+
+
+References get\+Letter().
+
+
+
+Referenced by generate().
+
+\mbox{\label{production_8h_a9f67b51c42a54745557e7a2c9c07c46f}} 
+\index{production.\+h@{production.\+h}!production@{production}}
+\index{production@{production}!production.\+h@{production.\+h}}
+\subsubsection{production()}
+{\footnotesize\ttfamily bool production (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv[$\,$] }\end{DoxyParamCaption})}
+
+production Takes in the user input 
+\begin{DoxyParams}{Parameters}
+{\em argc} & Number of words on the command line \\
+\hline
+{\em argv} & Array of pointers to character strings representing the words on the command line \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if program was able to play the Game Of Life false if user entered bad input or something went wrong 
+\end{DoxyReturn}
+
+
+References file\+Into\+Array(), generate(), and usage().
+
+
+
+Referenced by main().
+
+\mbox{\label{production_8h_a6bc14537b7dc8361ace9f0ee6aa49440}} 
+\index{production.\+h@{production.\+h}!same\+Content@{same\+Content}}
+\index{same\+Content@{same\+Content}!production.\+h@{production.\+h}}
+\subsubsection{same\+Content()}
+{\footnotesize\ttfamily bool same\+Content (\begin{DoxyParamCaption}\item[{char $\ast$}]{one\+\_\+p,  }\item[{char $\ast$}]{another\+\_\+p,  }\item[{int}]{n\+Rows,  }\item[{int}]{n\+Cols }\end{DoxyParamCaption})}
+
+same\+Content Compares two gameboards and determines if they have the same patttern or not 
+\begin{DoxyParams}{Parameters}
+{\em char$\ast$} & one\+\_\+p This is the pointer to the array for a gameboard \\
+\hline
+{\em char$\ast$} & another\+\_\+p This is the pointer to the array for another gameboard being compared to the first one \\
+\hline
+{\em int} & n\+Rows The number of rows in the array \\
+\hline
+{\em int} & n\+Cols The number of columns in the array \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool returns true if the two gameboards have the same pattern and false if they\textquotesingle{}re different 
+\end{DoxyReturn}
+
+
+References get\+Letter().
+
+
+
+Referenced by generate(), testsame\+Content(), and testsame\+Content2().
+
+\mbox{\label{production_8h_ae8605e2b78cd4a81b6c6b5c30cb7366a}} 
+\index{production.\+h@{production.\+h}!usage@{usage}}
+\index{usage@{usage}!production.\+h@{production.\+h}}
+\subsubsection{usage()}
+{\footnotesize\ttfamily void usage (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+usage This function outputs an error message when the user enters a bad input \begin{DoxyReturn}{Returns}
+void There is no return becuase it prints out an error message 
+\end{DoxyReturn}
+
+
+Referenced by production().
+
